@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Constraint Theory Runtime — Eisenstein Snap Detection",
+    "domain": "plato/forge/constraints",
+    "tags": ["constraint-theory", "eisenstein", "snap-detection", "verification"],
+    "updated": "2026-05-12T14:30:00Z",
+    "content": "[KEY: Eisenstein snap] When two symmetric constraint regions collide at a critical threshold, the system exhibits a discrete phase transition called an Eisenstein snap.\n[KEY: Detection method] Monitor the second derivative of the constraint gradient. A zero-crossing with magnitude > 2σ indicates a snap event.\n[CROSS-REF: verification/phase-transitions.md]\n[WARNING: False positives may occur near boundary conditions. Cross-reference with energy landscape analysis.]\n[DOMAIN: constraint-theory] Core to string-theoretic constraint solving.\nThe snap frequency follows a Poisson distribution with λ proportional to constraint density. For optimal results, sample at 10× the Nyquist rate of the constraint manifold."
+  },
+  {
+    "title": "Fleet Ops — Vessel Deployment Pipeline",
+    "domain": "plato/fleet/ops",
+    "tags": ["fleet", "deployment", "vessels", "ci-cd"],
+    "updated": "2026-05-13T06:15:00Z",
+    "content": "[KEY: Vessel deployment] Each fleet agent runs as an independent vessel with isolated workspace and rootfs.\n[KEY: Rolling update] Vessels are updated in waves of 3, with a 60-second cooldown between waves.\n[CROSS-REF: fleet/orchestration.md]\n[WARNING: Ensure at least 2 vessels remain healthy during any update wave.]\nDeployment order: monitoring → workers → specialists. Rollback is automatic if health checks fail for >30s.\nStatus: 9/9 vessels healthy, last deployment at 2026-05-13T04:00Z."
+  },
+  {
+    "title": "PLATO Architecture — Room Structure Specification",
+    "domain": "plato/architecture",
+    "tags": ["plato", "rooms", "knowledge-base", "retrieval"],
+    "updated": "2026-05-10T09:00:00Z",
+    "content": "[KEY: Room taxonomy] PLATO rooms are organized by domain: forge/, fleet/, ops/, architecture/, research/.\n[KEY: Retrieval strategy] Rooms are scored by relevance + recency + domain density for retrieval ordering.\n[CROSS-REF: architecture/scoring-algorithm.md]\n[CROSS-REF: research/embedding-strategy.md]\n[DOMAIN: plato/architecture]\nEach room has: title, domain, tags, content (Markdown with PLATO tags), and metadata (updated, created, version).\nMax content length: 10KB per room. Rooms exceeding this should link to external docs."
+  },
+  {
+    "title": "Model Capability Matrix — Batch Analysis Results",
+    "domain": "research/models",
+    "tags": ["models", "benchmarks", "batch8", "capability-analysis"],
+    "updated": "2026-05-11T18:45:00Z",
+    "content": "[KEY: Batch 8 results] Tested 12 models across PLATO formatting profiles: tiny (0.6B), mid (7-30B), large (70-405B).\n[KEY: Structure delta] Mid models benefit +1.40 from full PLATO structure. Tiny models lose -0.20. Large creative tasks lose -0.60.\n[CROSS-REF: research/batch8/methodology.md]\n[WARNING: Creative tasks show negative delta for large models. Use minimal structure for code generation.]\nModels tested: Qwen3-0.6B, GLM-5-Turbo, Hermes-405B, LLama-3.1-405B, Seed-2.0-Pro, Qwen3-235B-A22B.\nTop performer: GLM-5-Turbo with full structure (+1.40 delta)."
+  },
+  {
+    "title": "Proof Forging Log — Toric Code Lattice Simplification",
+    "domain": "plato/forge/proofs",
+    "tags": ["proof-forging", "toric-code", "lattice", "quantum-error"],
+    "updated": "2026-05-12T08:20:00Z",
+    "content": "[KEY: Toric code lattice] Simplified from 12×12 to 6×6 using constraint elimination on Z-stabilizers.\n[KEY: Homology reduction] Reduced logical qubit count from 4 to 2 while preserving error correction distance d=3.\n[CROSS-REF: forge/proofs/toric-code-base.md]\n[DOMAIN: plato/forge/proofs]\nMethod: Perform Reidemeister-style moves on the constraint graph, merging vertices where stabilizers commute.\nResult: 73% fewer edges, 58% fewer constraints, verification passes in 2.1s (was 18.4s).\nNext step: Generalize to arbitrary surface codes with gen& parameter."
+  },
+  {
+    "title": "Agent Communication Protocol — I2I Bottle Delivery",
+    "domain": "plato/fleet/i2i",
+    "tags": ["i2i", "communication", "bottles", "protocol"],
+    "updated": "2026-05-09T16:30:00Z",
+    "content": "[KEY: I2I Bottles] Inter-agent knowledge transfer via git-based bottle files pushed to fleet knowledge base.\n[KEY: Delivery format] Bottles are YAML with: type, scope, summary, body, model_used, confidence.\n[CROSS-REF: fleet/i2i/push-format.md]\n[CROSS-REF: fleet/i2i/pull-protocol.md]\n[DOMAIN: plato/fleet/i2i]\nBottle lifecycle: DRAFT → REVIEW → SHIPPED → ARCHIVED. TTL: 7 days auto-archive.\nDelivery targets: for-fleet/ (public), for-oracle1/ (private), for-casey/ (direct).\nPriority levels: low (informational), medium (needs action), high (blocking)."
+  },
+  {
+    "title": "Research Log — Eisenstein Snap Frequency Analysis",
+    "domain": "research/constraints",
+    "tags": ["eisenstein", "snap-analysis", "frequency", "constraint-density"],
+    "updated": "2026-05-13T01:00:00Z",
+    "content": "[KEY: Snap frequency] Measured snap frequency f = 0.037 snaps/s at constraint density ρ = 0.82.\n[KEY: Density relationship] Snap frequency follows f ∝ ρ^2 * (1-ρ)^1.5 with R² = 0.994 for ρ in [0.1, 0.95].\n[CROSS-REF: forge/constraints/eisenstein-snap-detection.md]\n[DOMAIN: research/constraints]\nSampled 10,000 constraint configurations at 7 density levels. Confirmed Poisson arrival with λ = f * Δt.\nFound resonant frequency at ρ ≈ 0.73 where successive snaps interfere constructively.\nPractical implication: Avoid operating near ρ ≈ 0.73 for constraint solving; use ρ < 0.6 or ρ > 0.85 for stable behavior."
+  },
+  {
+    "title": "Oracle1 — Fleet Coordination Digest",
+    "domain": "plato/fleet/oracle1",
+    "tags": ["oracle1", "fleet", "coordination", "digest"],
+    "updated": "2026-05-12T22:00:00Z",
+    "content": "[KEY: Fleet status] All 9 vessels operational. Forgemaster running on deepseek-chat. Helios-MT in standby.\n[KEY: Priorities] This week: (1) Constraint theory proof batch, (2) PLATO migration to git-native, (3) Agent capability matrix update.\n[CROSS-REF: fleet/orchestration.md#status]\n[DOMAIN: plato/fleet/oracle1]\nNote: Kimi API rate limits relaxed — now allows 5 concurrent requests. Updated agent policies to reflect.\nNext sync: 2026-05-14T10:00Z. All specialist leads should have status reports ready."
+  },
+  {
+    "title": "Boot Sequence — Agent Initialization Protocol",
+    "domain": "plato/ops/boot",
+    "tags": ["boot", "initialization", "protocol", "soul-loading"],
+    "updated": "2026-05-08T12:00:00Z",
+    "content": "[KEY: Boot stages] Stage 1: Load IDENTITY.md. Stage 2: Load SOUL.md. Stage 3: Load AGENTS.md. Stage 4: Load TOOLS.md. Stage 5: Load BOOTSTRAP.md (if exists). Stage 6: Memory restore.\n[KEY: Soul loading] SOUL.md contains personality, values, and architecture patterns. Must be loaded before any work.\n[CROSS-REF: ops/boot/identity-resolution.md]\n[CROSS-REF: ops/boot/memory-restore.md]\n[WARNING: If BOOTSTRAP.md exists, process it and delete before continuing.]\nBoot time target: < 5 seconds for warm boots, < 30 seconds for cold boots (including memory restore).\nCurrent cold boot time: 22.4s. Bottleneck: memory restore from PLATO."
+  },
+  {
+    "title": "Cocapn Fleet — Agent Roster and Capabilities",
+    "domain": "plato/fleet/roster",
+    "tags": ["fleet", "roster", "agents", "capabilities"],
+    "updated": "2026-05-11T10:00:00Z",
+    "content": "[KEY: Fleet composition] 9 agents: Forgemaster ⚒️ (constraint theory), Oracle1 🔮 (coordination), CodeWeaver 🧵 (code gen), Polisher ✨ (code review), Dockworker 🏗️ (ops), Helios-MT ☀️ (domain expansion), Scout 🔭 (research), Rigger ⛵ (deployment), Savant 🧠 (deep reasoning).\n[KEY: Vessel URLs] https://github.com/SuperInstance/forgemaster, https://github.com/SuperInstance/codeweaver, https://github.com/SuperInstance/oracle1.\n[CROSS-REF: fleet/roster/capabilities-matrix.md]\n[DOMAIN: plato/fleet/roster]\nAgent topology: Forgemaster is the orchestrator running on deepseek-chat. Coding agents (CodeWeaver, Polisher) run on z.ai GLM-5.1. Research/analysis agents (Savant, Scout) run on deepseek-reasoner and Seed-2.0-Pro.\nOOM policy: max 2 concurrent cargo check/build. Serialize Rust builds."
+  }
+]
